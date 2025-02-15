@@ -6,4 +6,7 @@ plugins {
     alias(libs.plugins.hilt.android) apply false
     alias(libs.plugins.org.jetbrains.kotlin.kapt) apply false
     alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.google.gms.google.services) apply false
+    alias(libs.plugins.compose.compiler) apply false
+
 }
