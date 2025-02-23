@@ -1,20 +1,20 @@
-package com.shoxrux.presentation.auth.signUp
+package com.shoxrux.presentation.screens.auth.signIn
 
 import com.shoxrux.domain.usecase.AuthUseCase
 import com.shoxrux.presentation.base.Reducer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-class SignUpScreenReducer(
-    initial: SignUpScreenState,
+class SignInScreenReducer(
+    initial: SignInScreenState,
     val authUseCase: AuthUseCase,
     val viewModelScope: CoroutineScope
-) : Reducer<SignUpScreenState, SignUpScreenEvent>(initial) {
+) : Reducer<SignInScreenState, SignInScreenEvent>(initial) {
 
 
-    override fun reduce(oldState: SignUpScreenState, event: SignUpScreenEvent) {
+    override fun reduce(oldState: SignInScreenState, event: SignInScreenEvent) {
         when (event) {
-            is SignUpScreenEvent.Default -> setState(
+            is SignInScreenEvent.Default -> setState(
                 oldState.copy(
                     isSuccess = false,
                     isLoading = false,
@@ -22,34 +22,34 @@ class SignUpScreenReducer(
                 )
             )
 
-            is SignUpScreenEvent.SignUpEvent -> {
-                sendEvent(SignUpScreenEvent.LoadingData)
+            is SignInScreenEvent.SignInEvent -> {
+                sendEvent(SignInScreenEvent.LoadingData)
                 viewModelScope.launch {
                     try {
 
-                        authUseCase.signUpByEmail(userModel = event.userModel)
+                        authUseCase.signInByEmail(email = event.login, password = event.password)
                             .collect {
                                 if (it.data != null) {
                                     setState(oldState.copy(isLoading = false, isSuccess = true))
                                 } else if (it.message != null) {
-                                    sendEvent(SignUpScreenEvent.ShowError(it.message))
+                                    sendEvent(SignInScreenEvent.ShowError(it.message))
                                 } else {
-                                    sendEvent(SignUpScreenEvent.LoadingData)
+                                    sendEvent(SignInScreenEvent.LoadingData)
                                 }
                             }
 
 
                     } catch (e: Exception) {
-                        sendEvent(SignUpScreenEvent.ShowError(e.message ?: "Unknown error"))
+                        sendEvent(SignInScreenEvent.ShowError(e.message ?: "Unknown error"))
                     }
                 }
             }
 
-            is SignUpScreenEvent.LoadingData -> {
+            is SignInScreenEvent.LoadingData -> {
                 setState(oldState.copy(isLoading = true, isSuccess = false))
             }
 
-            is SignUpScreenEvent.ShowError -> {
+            is SignInScreenEvent.ShowError -> {
                 setState(
                     oldState.copy(
                         isSuccess = false,

@@ -1,4 +1,4 @@
-package com.shoxrux.presentation.auth.signUp
+package com.shoxrux.presentation.screens.auth.signUp
 
 import androidx.lifecycle.viewModelScope
 import com.shoxrux.domain.usecase.AuthUseCase

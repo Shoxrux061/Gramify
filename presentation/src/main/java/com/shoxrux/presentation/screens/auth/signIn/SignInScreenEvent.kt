@@ -1,4 +1,4 @@
-package com.shoxrux.presentation.auth.signIn
+package com.shoxrux.presentation.screens.auth.signIn
 
 import androidx.compose.runtime.Immutable
 import com.shoxrux.presentation.base.UiEvent

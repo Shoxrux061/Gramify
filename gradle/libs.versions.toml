@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.1"
+composeInputMask = "1.0.0"
 firebaseBom = "33.9.0"
 jsr305 = "3.0.2"
 kotlin = "2.1.0"
@@ -54,6 +55,7 @@ storage = "1.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+compose-input-mask = { module = "io.github.3moly:compose-input-mask", version.ref = "composeInputMask" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
 google-firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }

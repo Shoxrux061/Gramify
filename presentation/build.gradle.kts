@@ -68,11 +68,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //ViewModel
-    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
 
     //Dagger Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    //Masked Edit Text
+    implementation(libs.compose.input.mask)
 
 }

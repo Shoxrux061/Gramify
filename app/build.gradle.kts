@@ -58,6 +58,7 @@ dependencies {
 
     implementation(project(":presentation"))
     implementation(project(":data"))
+    implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -82,7 +83,6 @@ dependencies {
     implementation(libs.navigation.compose)
     api(libs.kotlinx.serialization.json)
     debugImplementation(libs.androidx.ui.test.manifest)
-
 
 }
 kapt {

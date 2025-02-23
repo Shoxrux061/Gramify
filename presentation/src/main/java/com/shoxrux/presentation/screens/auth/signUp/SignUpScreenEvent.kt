@@ -1,4 +1,4 @@
-package com.shoxrux.presentation.auth.signUp
+package com.shoxrux.presentation.screens.auth.signUp
 
 import androidx.compose.runtime.Immutable
 import com.shoxrux.domain.model.user.UserModel

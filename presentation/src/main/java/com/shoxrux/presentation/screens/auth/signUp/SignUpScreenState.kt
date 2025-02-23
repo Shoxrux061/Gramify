@@ -1,4 +1,4 @@
-package com.shoxrux.presentation.auth.signUp
+package com.shoxrux.presentation.screens.auth.signUp
 
 import com.shoxrux.presentation.base.UiState
 import javax.annotation.concurrent.Immutable
