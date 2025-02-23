@@ -53,7 +53,7 @@ fun SignInScreen(navController: NavController) {
 
             state.value.isSuccess -> {
                 viewModel.sendEvent(SignInScreenEvent.Default)
-                navController.navigate(NavRoutes.MAIN_SCREEN)
+                /*navController.navigate(NavRoutes.MAIN_SCREEN)*/
             }
 
             state.value.error != null -> {

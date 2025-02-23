@@ -163,7 +163,7 @@ fun ConfirmPasswordScreen(navController: NavController, signUpDataViewModel: Sig
                         }
                     },
                     underTextOnClick = {
-                        navController.navigate(NavRoutes.MAIN_SCREEN)
+                        /*navController.navigate(NavRoutes.MAIN_SCREEN)*/
                     },
                     buttonText = "Done",
                     underText = "Already have an account?",

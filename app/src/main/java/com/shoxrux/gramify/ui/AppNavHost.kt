@@ -9,7 +9,6 @@ import com.shoxrux.presentation.screens.auth.signIn.SignInScreen
 import com.shoxrux.presentation.screens.auth.signUp.ConfirmPasswordScreen
 import com.shoxrux.presentation.screens.auth.signUp.SignUpDataViewModel
 import com.shoxrux.presentation.screens.auth.signUp.SignUpScreen
-import com.shoxrux.presentation.screens.main.home.MainScreen
 
 @Composable
 fun AppNavHost(navController: NavHostController, signUpViewModel: SignUpDataViewModel) {
@@ -29,10 +28,6 @@ fun AppNavHost(navController: NavHostController, signUpViewModel: SignUpDataView
 
         composable(NavRoutes.SIGN_IN_SCREEN) {
             SignInScreen(navController)
-        }
-
-        composable(NavRoutes.MAIN_SCREEN) {
-            MainScreen(navController)
         }
 
         composable(NavRoutes.CONFIRM_PASSWORD_SCREEN) {
