@@ -27,7 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.shoxrux.core.constants.NavRoutes
 import com.shoxrux.domain.model.user.UserModel
 import com.shoxrux.presentation.R
 import com.shoxrux.presentation.ui.colors.BackgroundColor
