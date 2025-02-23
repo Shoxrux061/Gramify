@@ -4,13 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.FirebaseApp
 import com.shoxrux.gramify.ui.AppNavHost
 import com.shoxrux.gramify.ui.theme.GramifyTheme
 import com.shoxrux.presentation.screens.auth.signUp.SignUpDataViewModel
-import com.shoxrux.presentation.screens.auth.signUp.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

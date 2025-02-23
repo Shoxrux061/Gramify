@@ -1,7 +1,6 @@
 package com.shoxrux.data.repository
 
 import android.util.Log
-import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.shoxrux.core.handler.NetworkResult
