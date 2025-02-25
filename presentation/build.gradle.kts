@@ -43,6 +43,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core"))
 
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -66,8 +67,6 @@ dependencies {
     implementation(libs.navigation.compose)
     api(libs.kotlinx.serialization.json)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation (libs.accompanist.systemuicontroller)
-
 
 
     //ViewModel

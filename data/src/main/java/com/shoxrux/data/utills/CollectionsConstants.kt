@@ -1,7 +1,8 @@
 package com.shoxrux.data.utills
 
-object Constants {
+object CollectionsConstants {
 
     const val USERS = "users"
+    const val POSTS = "posts"
 
 }
