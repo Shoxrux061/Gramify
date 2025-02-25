@@ -83,6 +83,9 @@ dependencies {
     implementation(libs.navigation.compose)
     api(libs.kotlinx.serialization.json)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation (libs.accompanist.systemuicontroller)
+
+
 
 }
 kapt {

@@ -13,3 +13,4 @@ val BrandSecondary = Color(0xFFEAEAEA)
 
 val TransParent = Color(0x00000000)
 val SemiTransParent = Color(0x80FFFFFF)
+val SemiGray = Color(0x43ADADAD)

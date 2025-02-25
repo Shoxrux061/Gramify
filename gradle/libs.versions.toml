@@ -1,4 +1,6 @@
 [versions]
+accompanistNavigationAnimation = "0.37.2"
+accompanistSystemuicontroller = "0.33.0-alpha"
 agp = "8.6.1"
 composeInputMask = "1.0.0"
 firebaseBom = "33.9.0"
@@ -18,7 +20,6 @@ material = "1.12.0"
 retrofit = "2.11.0"
 loggingInterceptor = "5.0.0-alpha.5"
 kotlinxSerializationJson = "1.6.3"
-retrofit2KotlinxSerializationConverter = "1.0.0"
 hiltAndroid = "2.52"
 hiltAndroidCompiler = "2.52"
 materialIconsExtended = "1.7.8"
@@ -54,6 +55,8 @@ uiTextAndroid = "1.7.8"
 storage = "1.5.0"
 
 [libraries]
+accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanistNavigationAnimation" }
+accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 compose-input-mask = { module = "io.github.3moly:compose-input-mask", version.ref = "composeInputMask" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
