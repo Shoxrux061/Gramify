@@ -8,7 +8,7 @@ class PostUseCase @Inject constructor(
     private val repository: PostRepository
 ) {
 
-    suspend fun addPost(postModel: PostModel) = repository.addPost(postModel)
-
+    suspend fun addPost(postModel: PostModel, byteArray: ByteArray) =
+        repository.addPost(postModel, byteArray)
 
 }

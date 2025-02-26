@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.junit)
-    alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.google.services)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
@@ -68,6 +68,8 @@ dependencies {
     api(libs.kotlinx.serialization.json)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    //Coil
+    implementation(libs.coil.compose)
 
     //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

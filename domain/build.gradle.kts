@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.android.junit)
-    alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.google.services)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 

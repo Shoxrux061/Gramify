@@ -59,6 +59,27 @@ val AppTypography = Typography(
         fontSize = 14.sp,
         fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
         color = Black
+    ),
+
+    labelLarge = TextStyle(
+        fontSize = 18.sp,
+        fontFamily = FontFamily(Font(R.font.poppins_medium)),
+        color = HeadlineTextColor
+
+    ),
+
+    labelMedium = TextStyle(
+        fontSize = 16.sp,
+        fontFamily = FontFamily(Font(R.font.poppins_medium)),
+        color = HeadlineTextColor
+    ),
+
+    labelSmall = TextStyle(
+        fontSize = 14.sp,
+        fontFamily = FontFamily(Font(R.font.poppins_medium)),
+        color = HeadlineTextColor
+
     )
+
 
 )

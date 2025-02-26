@@ -4,7 +4,6 @@ import androidx.compose.runtime.Immutable
 import com.shoxrux.domain.model.post.PostModel
 import com.shoxrux.presentation.base.UiEvent
 
-
 @Immutable
 sealed class PostPageEvent : UiEvent {
 
@@ -12,8 +11,8 @@ sealed class PostPageEvent : UiEvent {
 
     data object LoadingData : PostPageEvent()
 
-    data class SignInEvent(val postModel: PostModel) : PostPageEvent()
+    class PostEvent(val postModel: PostModel) : PostPageEvent()
 
-    data class ShowError(val errorMessage: String?) : PostPageEvent()
+    class ShowError(val errorMessage: String?) : PostPageEvent()
 
 }

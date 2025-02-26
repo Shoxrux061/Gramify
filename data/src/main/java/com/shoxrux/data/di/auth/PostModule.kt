@@ -2,6 +2,7 @@ package com.shoxrux.data.di.auth
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import com.shoxrux.data.repository.PostRepositoryImpl
 import com.shoxrux.domain.repository.PostRepository
 import com.shoxrux.domain.usecase.PostUseCase
@@ -16,15 +17,16 @@ import javax.inject.Singleton
 object PostModule {
 
     @[Provides Singleton]
-    fun provideAuthRepository(
+    fun providePostRepository(
         auth: FirebaseAuth,
+        storage: FirebaseStorage,
         firebaseFirestore: FirebaseFirestore
     ): PostRepository {
-        return PostRepositoryImpl(firestore = firebaseFirestore)
+        return PostRepositoryImpl(firestore = firebaseFirestore, firebaseStorage = storage, auth)
     }
 
     @[Provides Singleton]
-    fun provideAuthUseCase(authRepository: PostRepository) = PostUseCase(authRepository)
+    fun providePostUseCase(authRepository: PostRepository) = PostUseCase(authRepository)
 
 
 }

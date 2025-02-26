@@ -34,7 +34,7 @@ fun BottomNavHost(navController: NavHostController) {
     ) {
         composable(route = NavRoutes.ITEM_HOME_PAGE) { HomePage() }
         composable(route = NavRoutes.ITEM_CHAT_PAGE) { ChatPage() }
-        composable(route = NavRoutes.ITEM_POST_PAGE) { PostPage() }
+        composable(route = NavRoutes.ITEM_POST_PAGE) { PostPage(navController) }
         composable(route = NavRoutes.ITEM_REELS_PAGE) { ReelsPage() }
         composable(route = NavRoutes.ITEM_PROFILE_PAGE) { ProfilePage() }
     }

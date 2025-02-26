@@ -2,6 +2,7 @@
 accompanistNavigationAnimation = "0.37.2"
 accompanistSystemuicontroller = "0.33.0-alpha"
 agp = "8.6.1"
+coilCompose = "2.7.0"
 composeInputMask = "1.0.0"
 firebaseBom = "33.9.0"
 jsr305 = "3.0.2"
@@ -59,10 +60,13 @@ storage = "1.5.0"
 accompanist-navigation-animation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanistNavigationAnimation" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 compose-input-mask = { module = "io.github.3moly:compose-input-mask", version.ref = "composeInputMask" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
+firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx" }
 google-firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
+google-firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
 google-firebase-firestore-ktx = { module = "com.google.firebase:firebase-firestore-ktx" }
 jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -135,7 +139,7 @@ androidx-storage = { group = "androidx.test.services", name = "storage", version
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-google-services = { id = "com.google.gms.google-services", version = "4.4.2" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid"}
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
@@ -144,7 +148,6 @@ screenshot = { id = "com.android.compose.screenshot", version.ref = "screenshot"
 android-junit = { id = "de.mannodermaus.android-junit5", version.ref = "androidJunit5"}
 spotless = { id = "com.diffplug.spotless", version = "6.25.0" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 
 [bundles]
 unittest = ["junit-jupiter", "kotest-assertions-core", "mockk", "kotlinx-coroutines-test", "kotest-runner-junit5"]

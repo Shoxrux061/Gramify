@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostRepository {
 
-    suspend fun addPost(postModel: PostModel): Flow<NetworkResult<Boolean>>
+    suspend fun addPost(postModel: PostModel, byteArray: ByteArray): Flow<NetworkResult<Boolean>>
 
 }
