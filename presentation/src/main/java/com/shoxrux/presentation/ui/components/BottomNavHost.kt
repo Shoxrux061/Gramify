@@ -3,7 +3,11 @@ package com.shoxrux.presentation.ui.components
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.shoxrux.core.constants.NavRoutes
 import com.shoxrux.presentation.screens.main.chat.ChatPage
@@ -15,8 +19,11 @@ import androidx.navigation.compose.composable
 import com.shoxrux.presentation.screens.main.reels.ReelsPage
 
 @Composable
-fun BottomNavHost(navController: NavHostController) {
+fun BottomNavHost(navController: NavHostController, paddingValues: PaddingValues) {
     NavHost(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues),
         navController = navController,
         startDestination = NavRoutes.ITEM_HOME_PAGE,
         enterTransition = {

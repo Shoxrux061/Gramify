@@ -308,7 +308,7 @@ fun HeaderWithBackButton(onBackClick: () -> Unit, header: String) {
 }
 
 @Composable
-fun AppButton(onClick: () -> Unit, buttonText: String) {
+fun AppButton(onClick: () -> Unit, buttonText: String, modifier: Modifier = Modifier) {
 
     Button(
         shape = RoundedCornerShape(12.dp),
@@ -316,7 +316,7 @@ fun AppButton(onClick: () -> Unit, buttonText: String) {
             containerColor = BrandColor,
             contentColor = BrandSecondary
         ),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(48.dp),
         onClick = {

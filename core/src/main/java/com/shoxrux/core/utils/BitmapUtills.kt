@@ -10,6 +10,6 @@ fun bitmapToByteArray(context: Context, uri: Uri): ByteArray {
     val inputStream = context.contentResolver.openInputStream(uri)
     val bitmap = BitmapFactory.decodeStream(inputStream)
     val baos = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos)
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos)
     return baos.toByteArray()
 }

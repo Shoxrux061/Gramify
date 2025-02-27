@@ -8,4 +8,6 @@ interface PostRepository {
 
     suspend fun addPost(postModel: PostModel, byteArray: ByteArray): Flow<NetworkResult<Boolean>>
 
+    suspend fun getPosts(): Flow<NetworkResult<List<PostModel>>>
+
 }

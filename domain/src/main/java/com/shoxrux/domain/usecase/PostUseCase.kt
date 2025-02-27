@@ -11,4 +11,6 @@ class PostUseCase @Inject constructor(
     suspend fun addPost(postModel: PostModel, byteArray: ByteArray) =
         repository.addPost(postModel, byteArray)
 
+    suspend fun getPosts() = repository.getPosts()
+
 }

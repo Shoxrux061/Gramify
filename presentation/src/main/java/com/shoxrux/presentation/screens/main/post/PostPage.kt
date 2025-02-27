@@ -3,6 +3,7 @@ package com.shoxrux.presentation.screens.main.post
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,6 +23,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -32,22 +34,25 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
 import com.shoxrux.core.utils.bitmapToByteArray
 import com.shoxrux.domain.model.post.PostModel
 import com.shoxrux.presentation.R
 import com.shoxrux.presentation.ui.colors.BackgroundColor
 import com.shoxrux.presentation.ui.colors.BrandColor
 import com.shoxrux.presentation.ui.colors.BrandSecondary
+import com.shoxrux.presentation.ui.colors.SemiGray
 import com.shoxrux.presentation.ui.colors.TransParent
 import com.shoxrux.presentation.ui.components.AppButton
-import com.shoxrux.presentation.ui.components.HeaderWithBackButton
 import com.shoxrux.presentation.ui.trheme.AppTypography
 
 @Composable
@@ -56,13 +61,17 @@ fun PostPage(navController: NavController) {
     val viewModel = hiltViewModel<PostPageViewModel>()
     val state = viewModel.state.collectAsState()
 
-    val captionText = remember { mutableStateOf("") }
+    val isSubmitted = remember { mutableStateOf(false) }
+
+    val captionText = rememberSaveable { mutableStateOf("") }
+    val selectedImageUri = rememberSaveable { mutableStateOf<Uri?>(null) }
+
 
     val launcher = rememberLauncherForActivityResult(
         ActivityResultContracts.PickVisualMedia()
     ) {
         if (it == null) return@rememberLauncherForActivityResult
-        uploadPost(captionText.value, uri = it, navController.context, viewModel)
+        selectedImageUri.value = it
     }
 
 
@@ -71,38 +80,38 @@ fun PostPage(navController: NavController) {
         when {
             state.value.isLoading -> {
                 Log.d("TAGSuccess", "PostPage: Loading")
-
             }
 
             state.value.isSuccess -> {
+                Toast.makeText(navController.context, "Loaded", Toast.LENGTH_SHORT).show()
                 viewModel.sendEvent(PostPageEvent.Default)
+                selectedImageUri.value = null
+                captionText.value = ""
                 Log.d("TAGSuccess", "PostPage: Success")
-
             }
 
             state.value.error != null -> {
+                Toast.makeText(navController.context, "Canceled", Toast.LENGTH_SHORT).show()
                 Log.d("TAGSuccess", "PostPage: Error")
-
             }
         }
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(BackgroundColor)
-    ) {
 
-        HeaderWithBackButton(
-            onBackClick = {},
-            header = "Post"
-        )
+    Box(modifier = Modifier.fillMaxSize()) {
 
         Column(
             modifier = Modifier
+                .background(BackgroundColor)
                 .padding(horizontal = 16.dp)
                 .fillMaxSize()
         ) {
+
+            Text(
+                text = "Post",
+                style = AppTypography.headlineMedium,
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            )
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -126,10 +135,17 @@ fun PostPage(navController: NavController) {
                 colors = CardDefaults.cardColors(
                     containerColor = BrandSecondary
                 ),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = BrandColor
-                )
+                border = if (isSubmitted.value && selectedImageUri.value == null) {
+                    BorderStroke(
+                        width = 1.dp,
+                        color = Color.Red
+                    )
+                } else {
+                    BorderStroke(
+                        width = 1.dp,
+                        color = BrandColor
+                    )
+                }
             ) {
 
                 Box(
@@ -139,7 +155,7 @@ fun PostPage(navController: NavController) {
                     Image(
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop,
-                        painter = painterResource(R.drawable.ic_reels),
+                        painter = rememberAsyncImagePainter(selectedImageUri.value),
                         contentDescription = null
                     )
 
@@ -173,6 +189,8 @@ fun PostPage(navController: NavController) {
                 shape = RoundedCornerShape(12.dp),
                 border = if (isFocused) {
                     BorderStroke(width = 1.dp, color = BrandColor)
+                } else if (captionText.value.isBlank() && isSubmitted.value) {
+                    BorderStroke(width = 1.dp, color = Color.Red)
                 } else {
                     null
                 }
@@ -201,9 +219,32 @@ fun PostPage(navController: NavController) {
             Spacer(modifier = Modifier.height(30.dp))
 
             AppButton(onClick = {
+                if (selectedImageUri.value != null && captionText.value.isNotEmpty()) {
+                    uploadPost(
+                        captionText.value,
+                        uri = selectedImageUri.value!!,
+                        navController.context,
+                        viewModel
+                    )
+                } else {
+                    isSubmitted.value = true
+                }
 
             }, buttonText = "Upload")
 
+        }
+
+        if (state.value.isLoading) {
+
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(SemiGray)
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         }
     }
 }
@@ -212,7 +253,6 @@ fun uploadPost(captionText: String, uri: Uri, context: Context, viewModel: PostP
     val byteArray = bitmapToByteArray(context, uri)
     viewModel.uploadPost(
         postModel = PostModel(
-            imageUrl = uri.toString(),
             content = captionText
         ),
         byteArray = byteArray
